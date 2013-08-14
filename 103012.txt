@@ -1,0 +1,87 @@
+10/30/12
+
+-Added instructions text and auto-wrapping
+-Added diary
+-Saving E to session directory, until otherwise specified
+-Ensured that practice has at least one spanish and one english word
+
+10/29/12
+
+-Changed script, such that 1 function call contains 3 runs.
+-Allocated data write to accommodate for 3 runs.  Removed run folders.  Data will go to session folder.
+-Added prompt to specify which run if trying to continue session.
+-Column 1 is now considered Spanish, and 2 to be English.
+-1 run contains 90 words, 3 runs is 270 words
+-Practice implemented.  5 word trials used for practice.  Data logs to “*_Practice_*”, and can be observed prior to actual runs.
+- Default TR set from 3 to 2, if manual start is selected.
+
+10/16/12
+
+Contents added: WordDisp.m
+
+WordDisp.m:
+Object
+
+10/15/12
+
+Contents added: ncli.m, /data, /stim
+
+ncli.m:
+Created directory structure in ‘data’:
+	- Subject #
+		- Session #
+			- Run #
+Input subject ID according to 4 digit convention
+Request overwrite if run numbers overlap
+
+/stim:
+stim.xlsx
+	- Removed “Lexical Decision Stimuli” from headers -- Notify input demands**
+	- Removed headers:
+		- English (1), Spanish (2), Homographs (3) -- Notify**
+	- Renamed to stim.xlsx -- Notify input demands**
+
+ToAsk:
+	- 201 in “presentation order”, but 101 in spanish, 101 in english, and 104 in homographs.
+- Ignore presentation order, but follow “homograph after spanish” convention?  This will produce 303 trials.  However, 90-100 was originally requested.
+- Also, need more spanish than homograph in order to follow rule.
+- Upon response, you want the word to disappear (if before 1s is reached), but it still must wait until the ITI is finished.  So, the participant will not know whether they pressed or not if after 1s.  Is this okay?
+- Just to clarify, the ITI total time takes the 1s into account (if participant did not respond early)?
+- What buttons to press for S/E?
+
+10/12/12
+3 Functional Runs: 90-100 text
+3 Conditions: Spanish, English, Homographs
+
+Jittered ITI:
+	- 3-5s (.25 intervals)
+	- Run through Suzy’s ER-efficiency script.
+
+Initial Fixation:
+	- 6-8s
+	- No Final Fixation
+
+Trial:
+	- Text displays for 1s maximum, May fall short if response is early
+	- Response recording begins at picture presentation
+	- Fixation cross (black) after picture 1s max is reached.
+		- Fixation lasts for jittered ITI
+	- Text is black
+		- Text taken from excel sheets
+		- Homographs must appear after Spanish Trials
+	- Background is gray
+
+Response Recording:
+	- Spanish/Not Spanish
+
+Output:
+	- Col 1: Subj # (0000) -- ID number, Session #, Run #
+		- Request ID and Session # at run start
+	- Col 2: Trial #
+	- Col 3: Trial type -- Spanish/English/Homograph
+	- Col 4: String
+	- Col 5: Accuracy
+	- Col 6: RT
+
+Summary Output:
+	- Accuracy and RT by trial type.
